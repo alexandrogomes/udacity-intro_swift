@@ -27,12 +27,17 @@ class ViewController: UIViewController {
     
     @IBAction func recordAudio(sender: UIButton) {
         println("recording")
+        
         if !isRecording {
             isRecording = true
+
             UIView.animateWithDuration(1.5, delay: 0.5, options: UIViewAnimationOptions.Repeat, animations: { () -> Void in
                 self.lblRecording.alpha = 1
             }, completion: nil)
             
+        } else {
+            self.lblRecording.layer.removeAllAnimations()
+            isRecording = false
         }
     }
 
