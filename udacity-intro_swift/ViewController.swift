@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var lblRecording: UILabel!
+    var isRecording = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +24,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    @IBAction func recordAudio(sender: UIButton) {
+        println("recording")
+        if !isRecording {
+            isRecording = true
+            UIView.animateWithDuration(1.5, delay: 0.5, options: UIViewAnimationOptions.Repeat, animations: { () -> Void in
+                self.lblRecording.alpha = 1
+            }, completion: nil)
+            
+        }
+    }
 
 }
 

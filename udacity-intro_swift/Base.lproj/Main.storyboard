@@ -21,16 +21,35 @@
                                 <state key="normal" image="microphone">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zsz-tE-ag2"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4n-AK-1Sq">
+                                <rect key="frame" x="264" y="358" width="72" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="recording">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="8W3-H8-ilK" secondAttribute="centerX" id="7Wk-5H-IJJ"/>
+                            <constraint firstItem="j4n-AK-1Sq" firstAttribute="top" secondItem="8W3-H8-ilK" secondAttribute="bottom" constant="8" id="UVq-Sv-Tez"/>
+                            <constraint firstAttribute="centerX" secondItem="j4n-AK-1Sq" secondAttribute="centerX" id="niV-N8-WIx"/>
                             <constraint firstAttribute="centerY" secondItem="8W3-H8-ilK" secondAttribute="centerY" id="ouG-IK-mk1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="eFi-g3-1Cv"/>
                     <connections>
+                        <outlet property="lblRecording" destination="j4n-AK-1Sq" id="zr4-7D-WgI"/>
                         <segue destination="zZX-Sy-cBk" kind="show" id="894-zz-ovI"/>
                     </connections>
                 </viewController>
