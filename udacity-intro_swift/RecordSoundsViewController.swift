@@ -21,12 +21,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,7 +32,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("prepareForSegue")
         if (segue.identifier == "showPlaySounds") {
             let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
             
@@ -47,8 +44,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func hideElementsWhenStopRecord() {
         btnStop.hidden = true
         btnStop.alpha = 1
-        lblRecording.alpha = 0
+        lblRecording.alpha = 1
         self.lblRecording.layer.removeAllAnimations()
+        lblRecording.text = "Tap to Record"
     }
 
     func recordAudio() {
@@ -77,12 +75,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     //MARK: Actions
     
     @IBAction func actionRecord(sender: UIButton) {
-        println("recording")
-        
         if !isRecording {
             self.recordAudio()
             isRecording = true
             btnStop.hidden = false
+            lblRecording.text = "recording in progress…"
+            lblRecording.alpha = 0
             UIView.animateWithDuration(1.5, delay: 0.5, options: UIViewAnimationOptions.Repeat, animations: { () -> Void in
                 self.lblRecording.alpha = 1
                 }, completion: {(finish) -> Void in
@@ -111,9 +109,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     //MARK: AVAudioRecorderDelegate
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
-        recordedAudio = RecordedAudio()
-        recordedAudio.filePathUrl = recorder.url
-        recordedAudio.title = recorder.url.lastPathComponent
+        recordedAudio = RecordedAudio(title: recorder.url.lastPathComponent!, filePathUrl: recorder.url)
         self.performSegueWithIdentifier("showPlaySounds", sender: recordedAudio)
     }
 
