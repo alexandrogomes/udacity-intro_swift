@@ -7,29 +7,44 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    var audioPlayer:AVAudioPlayer!
+    var receivedAudio:RecordedAudio!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer.enableRate = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func playWithRate(rateValue:Float) {
+        audioPlayer.stop()
+        audioPlayer.rate = rateValue
+        audioPlayer.currentTime = 0.0
+        audioPlayer.play()
     }
-    */
 
+    @IBAction func actionPlaySlow(sender: UIButton) {
+        playWithRate(0.5)
+    }
+    
+    @IBAction func actionPlayFast(sender: UIButton) {
+        playWithRate(1.5)
+    }
+
+    @IBAction func actionStop(sender: UIButton) {
+        audioPlayer.stop()
+    }
+    
+    @IBAction func actionChipmunk(sender: UIButton) {
+    }
+    
 }

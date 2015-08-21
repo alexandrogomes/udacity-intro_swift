@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iQX-vU-JGc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
@@ -49,7 +50,6 @@
                                 </state>
                                 <connections>
                                     <action selector="actionStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="D7Q-XK-a4P"/>
-                                    <segue destination="zZX-Sy-cBk" kind="show" identifier="showPlaySounds" id="dkh-ke-NLK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,16 +67,17 @@
                     <connections>
                         <outlet property="btnStop" destination="R4D-8i-miq" id="7gz-Zb-AeK"/>
                         <outlet property="lblRecording" destination="j4n-AK-1Sq" id="fbI-Re-2dJ"/>
+                        <segue destination="zZX-Sy-cBk" kind="show" identifier="showPlaySounds" id="0AR-oi-ZRL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2741" y="418"/>
         </scene>
-        <!--Play Sounds Controller-->
+        <!--Play Sounds View Controller-->
         <scene sceneID="nvH-rM-qVf">
             <objects>
-                <viewController id="zZX-Sy-cBk" customClass="PlaySoundsController" sceneMemberID="viewController">
+                <viewController id="zZX-Sy-cBk" customClass="PlaySoundsViewController" customModule="udacity_intro_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ivk-Sv-ARb"/>
                         <viewControllerLayoutGuide type="bottom" id="hI8-uJ-0uM"/>
@@ -84,7 +85,55 @@
                     <view key="view" contentMode="scaleToFill" id="TTX-gU-LdF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWQ-Jd-zMq">
+                                <rect key="frame" x="34" y="96" width="100" height="100"/>
+                                <state key="normal" image="slow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionPlaySlow:" destination="zZX-Sy-cBk" eventType="touchUpInside" id="aft-0e-it4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-ET-ims">
+                                <rect key="frame" x="466" y="96" width="100" height="100"/>
+                                <state key="normal" image="fast">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionPlayFast:" destination="zZX-Sy-cBk" eventType="touchUpInside" id="Kb6-Gj-5k5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-cf-4r1">
+                                <rect key="frame" x="275" y="530" width="50" height="50"/>
+                                <state key="normal" image="stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionStop:" destination="zZX-Sy-cBk" eventType="touchUpInside" id="ohl-2A-w8i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFM-PR-AbE">
+                                <rect key="frame" x="34" y="419" width="100" height="100"/>
+                                <state key="normal" image="chipmunk">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionChipmunk:" destination="zZX-Sy-cBk" eventType="touchUpInside" id="1CS-fe-gss"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.30388637569999999" blue="0.1745165534" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FWQ-Jd-zMq" firstAttribute="leading" secondItem="TTX-gU-LdF" secondAttribute="leadingMargin" constant="18" id="1Mw-N4-PHz"/>
+                            <constraint firstItem="sFM-PR-AbE" firstAttribute="leading" secondItem="TTX-gU-LdF" secondAttribute="leadingMargin" constant="18" id="3Uo-UZ-HsX"/>
+                            <constraint firstItem="C1p-ET-ims" firstAttribute="top" secondItem="ivk-Sv-ARb" secondAttribute="bottom" constant="32" id="JoZ-6n-gwK"/>
+                            <constraint firstAttribute="centerX" secondItem="7wo-cf-4r1" secondAttribute="centerX" id="VVE-D5-PqS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C1p-ET-ims" secondAttribute="trailing" constant="18" id="mf6-8G-GWm"/>
+                            <constraint firstItem="hI8-uJ-0uM" firstAttribute="top" secondItem="sFM-PR-AbE" secondAttribute="bottom" constant="81" id="n4U-RO-DgO"/>
+                            <constraint firstItem="FWQ-Jd-zMq" firstAttribute="top" secondItem="ivk-Sv-ARb" secondAttribute="bottom" constant="32" id="pS4-es-QY3"/>
+                            <constraint firstItem="hI8-uJ-0uM" firstAttribute="top" secondItem="7wo-cf-4r1" secondAttribute="bottom" constant="20" id="yGQ-cJ-KMv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCh-ux-6sH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,7 +160,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chipmunk" width="100" height="100"/>
+        <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="slow" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>
     </resources>
 </document>

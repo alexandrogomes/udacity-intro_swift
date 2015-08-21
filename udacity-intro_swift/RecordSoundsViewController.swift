@@ -34,9 +34,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
-//        
-//        let data = sender as! RecordedAudio
+        println("prepareForSegue")
+        if (segue.identifier == "showPlaySounds") {
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            
+            let data = sender as! RecordedAudio
+            playSoundsVC.receivedAudio = data
+        }
+        
     }
     
     func hideElementsWhenStopRecord() {
@@ -86,13 +91,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             
         } else {
             hideElementsWhenStopRecord()
-            isRecording = false
+            self.isRecording = false
             self.stopAudio()
         }
     }
 
 
     @IBAction func actionStop(sender: UIButton) {
+        self.isRecording = false
         self.stopAudio()
         UIView.animateWithDuration(1.5, delay: 0.5, options: nil, animations: { () -> Void in
                 self.btnStop.alpha = 0
@@ -108,7 +114,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordedAudio = RecordedAudio()
         recordedAudio.filePathUrl = recorder.url
         recordedAudio.title = recorder.url.lastPathComponent
-        //self.performSegueWithIdentifier("showPlaySounds", sender: recordedAudio)
+        self.performSegueWithIdentifier("showPlaySounds", sender: recordedAudio)
     }
 
 }

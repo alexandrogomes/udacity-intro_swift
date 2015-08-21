@@ -15,6 +15,7 @@
 		A607BB811B8520D600503BC2 /* udacity_intro_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607BB801B8520D600503BC2 /* udacity_intro_swiftTests.swift */; };
 		A607BB8D1B867A2C00503BC2 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607BB8C1B867A2C00503BC2 /* RecordedAudio.swift */; };
 		A607BB911B86820500503BC2 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607BB901B86820500503BC2 /* PlaySoundsViewController.swift */; };
+		B8EFC9581B86B37B0097088D /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8EFC9571B86B37B0097088D /* movie_quote.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		A607BB801B8520D600503BC2 /* udacity_intro_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = udacity_intro_swiftTests.swift; sourceTree = "<group>"; };
 		A607BB8C1B867A2C00503BC2 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		A607BB901B86820500503BC2 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
+		B8EFC9571B86B37B0097088D /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		A607BB681B8520D600503BC2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B8EFC9571B86B37B0097088D /* movie_quote.mp3 */,
 				A607BB691B8520D600503BC2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -200,6 +203,7 @@
 			files = (
 				A607BB701B8520D600503BC2 /* Main.storyboard in Resources */,
 				A607BB751B8520D600503BC2 /* LaunchScreen.xib in Resources */,
+				B8EFC9581B86B37B0097088D /* movie_quote.mp3 in Resources */,
 				A607BB721B8520D600503BC2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
